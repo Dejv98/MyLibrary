@@ -1,4 +1,4 @@
 <div class="home">
-<app-header></app-header>
-<app-books></app-books>
+<app-header (btnHomeClick)="getBooks()" (btnFavClick)="getFavBooks()" (btnReadClick)="getReadBooks()"></app-header>
+<app-books [books]="books"></app-books>
 </div>

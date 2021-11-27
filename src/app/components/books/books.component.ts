@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Book } from 'src/app/Book';
 import { BookService } from 'src/app/services/book.service';
-import { MatDialogConfig, MatDialog } from '@angular/material/dialog';
-import { AddBookDialogComponent } from '../add-book-dialog/add-book-dialog.component';
+import { EditBookDialogComponent } from '../edit-book-dialog/edit-book-dialog.component';
 
 @Component({
   selector: 'app-books',
@@ -10,17 +10,36 @@ import { AddBookDialogComponent } from '../add-book-dialog/add-book-dialog.compo
   styleUrls: ['./books.component.scss'],
 })
 export class BooksComponent implements OnInit {
-  books: Book[] = [];
+  @Input() books: Book[] = [];
   totalRecords: Number;
   page: Number = 1;
 
-  constructor(private bookService: BookService) {}
+  openEditBookDialog(book : Book) {
+    const dialogConfig = new MatDialogConfig();
 
-  ngOnInit(): void {
-    this.bookService.getBooks().subscribe((books) => {
-      (this.books = books), (this.totalRecords = books.length);
-    });
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = book;
+
+    this.dialog.open(EditBookDialogComponent, dialogConfig);
+
+    const dialogRef = this.dialog.open(EditBookDialogComponent, dialogConfig);
+
+    dialogRef
+      .afterClosed()
+      .subscribe((data) =>
+        this.editBook(this.dataToBook(data))
+      );
   }
+
+  dataToBook(data: any): Book {
+    return data as Book;
+  }
+
+  constructor(private bookService: BookService, private dialog: MatDialog) {}
+
+  ngOnInit(): void {}
 
   deleteBook(book: Book): void {
     this.bookService
@@ -31,7 +50,6 @@ export class BooksComponent implements OnInit {
   }
 
   readBook(book: Book): void {
-    console.log(book);
     book.isRead = !book.isRead;
     this.bookService.updateBook(book).subscribe();
   }

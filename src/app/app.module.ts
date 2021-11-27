@@ -22,6 +22,9 @@ import { BookService } from './services/book.service';
 import { AddBookDialogComponent } from './components/add-book-dialog/add-book-dialog.component';
 import { MatInputModule } from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { EditBookDialogComponent } from './components/edit-book-dialog/edit-book-dialog.component';
+import {TextFieldModule} from '@angular/cdk/text-field';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     BooksComponent,
     BookItemComponent,
     AddBookDialogComponent,
+    EditBookDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,9 +53,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
+    TextFieldModule,
   ],
   providers: [BookService],
   bootstrap: [AppComponent],
-  entryComponents: [AddBookDialogComponent],
+  entryComponents: [AddBookDialogComponent, EditBookDialogComponent],
 })
 export class AppModule {}

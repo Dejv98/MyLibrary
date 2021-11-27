@@ -4,25 +4,26 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Book } from 'src/app/Book';
 
 @Component({
-  selector: 'app-add-book-dialog',
-  templateUrl: './add-book-dialog.component.html',
-  styleUrls: ['./add-book-dialog.component.scss'],
+  selector: 'app-edit-book-dialog',
+  templateUrl: './edit-book-dialog.component.html',
+  styleUrls: ['./edit-book-dialog.component.scss']
 })
-export class AddBookDialogComponent implements OnInit {
+export class EditBookDialogComponent implements OnInit {
   form: FormGroup;
+
   constructor(
     private fb: FormBuilder,
-    private dialogRef: MatDialogRef<AddBookDialogComponent>,
+    private dialogRef: MatDialogRef<EditBookDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data : Book
   ) {
     this.form = this.fb.group({
-      id: null,
-      name: '',
-      desc: '',
-      author: '',
-      imageLink: '',
-      isFavorite: false,
-      isRead: false
+      id: data.id,
+      name: data.name,
+      desc: data.desc,
+      author: data.author,
+      imageLink: data.imageLink,
+      isFavorite: data.isFavorite,
+      isRead: data.isRead
     });
   }
 
