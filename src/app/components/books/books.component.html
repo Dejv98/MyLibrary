@@ -1,0 +1,3 @@
+<div class="books">
+  <app-book-item *ngFor="let book of books" [book]="book" (onDeleteBook)="deleteBook(book)" (onFavoriteBook)="favoriteBook(book)" (onReadBook)="readBook(book)" (onEditBook)="editBook(book)"></app-book-item>
+</div>

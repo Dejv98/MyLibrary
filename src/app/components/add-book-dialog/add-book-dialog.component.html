@@ -1,0 +1,30 @@
+<h2 mat-dialog-title>Add book</h2>
+
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <input matInput placeholder="Book name" formControlName="name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Book description" formControlName="desc" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Book author" formControlName="author" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Book imageLink" formControlName="imageLink" />
+  </mat-form-field>
+
+  <mat-checkbox formControlName="isFavorite"
+    >favorite?</mat-checkbox
+  >
+  <mat-checkbox formControlName="isRead">read?</mat-checkbox>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+
+  <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions>

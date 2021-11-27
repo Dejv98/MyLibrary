@@ -1,0 +1,14 @@
+.books {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    margin: 20px auto;
+}
+
+.mat-grid-list{
+    width: 50 vw;
+    height: 50 vh;
+ }

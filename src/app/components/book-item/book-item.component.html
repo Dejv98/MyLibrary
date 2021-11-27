@@ -1,0 +1,20 @@
+<div class="book">
+  <mat-card>
+    <mat-card-title-group>
+      <mat-card-title>{{ book.name }}</mat-card-title>
+      <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
+      <img mat-card-xl-image src="{{ book.imageLink }}" class="image" />
+    </mat-card-title-group>
+    <mat-card-content>
+      <p>
+        {{ book.desc }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <app-add-button [ngClass]='{blue : !book.isFavorite, green: book.isFavorite}' icon="favorite"(btnClick)="onFavorite(book)"></app-add-button>
+      <app-add-button [ngClass]='{blue : !book.isRead, green: book.isRead}' icon="bookmark_added" (btnClick)="onRead(book)"></app-add-button>
+      <app-add-button color="gray" icon="mode_edit" (btnClick)="onEdit(book)"></app-add-button>
+      <app-add-button color="red" icon="delete" (btnClick)="onDelete(book)"></app-add-button>
+    </mat-card-actions>
+  </mat-card>
+</div>

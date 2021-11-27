@@ -1,0 +1,15 @@
+.icon{
+    margin: 10px;
+    transform: scale(1);
+}
+.icon:focus {
+    outline: none;
+  }
+  .icon:active {
+    transform: scale(0.8);
+  }
+  
+  .icon-block {
+    display: block;
+    width: 100%;
+  }

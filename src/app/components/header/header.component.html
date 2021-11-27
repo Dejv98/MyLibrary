@@ -1,0 +1,10 @@
+<p>
+    <mat-toolbar color="primary">
+      <span>{{title}}</span>
+      <span class="spacer"></span>
+      <app-add-button color="white" icon="home"></app-add-button>
+      <app-add-button color="white" icon="favorite"></app-add-button>
+      <app-add-button color="white" icon="bookmark_added"></app-add-button>
+    </mat-toolbar>
+    <app-add-button color="white" icon="note_add" backgroundColor="green" (btnClick)="openAddBookDialog()"></app-add-button>
+  </p>
