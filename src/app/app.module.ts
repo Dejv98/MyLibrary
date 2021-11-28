@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { EditBookDialogComponent } from './components/edit-book-dialog/edit-book-dialog.component';
 import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
     MatInputModule,
     MatCheckboxModule,
     TextFieldModule,
+    MatPaginatorModule,
   ],
   providers: [BookService],
   bootstrap: [AppComponent],

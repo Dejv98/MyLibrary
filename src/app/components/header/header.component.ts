@@ -30,29 +30,11 @@ export class HeaderComponent implements OnInit {
     dialogConfig.data = {};
 
     this.dialog.open(AddBookDialogComponent, dialogConfig);
-
-    const dialogRef = this.dialog.open(AddBookDialogComponent, dialogConfig);
-
-    dialogRef
-      .afterClosed()
-      .subscribe((data) =>
-        this.bookService.addBook(this.dataToBook(data)).subscribe()
-      );
   }
 
   dataToBook(data: any): Book {
     return data as Book;
   }
-  /*getFavoriteBooks() {
-    this.bookService
-      .getBooks()
-      .subscribe(
-        () =>
-          (this.booksComponent.books = this.booksComponent.books.filter(
-            (b) => b.isFavorite != false
-          ))
-      );
-  }*/
   onHomeButton(): void{
     this.btnHomeClick.emit();
   }

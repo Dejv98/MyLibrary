@@ -24,13 +24,6 @@ export class BooksComponent implements OnInit {
 
     this.dialog.open(EditBookDialogComponent, dialogConfig);
 
-    const dialogRef = this.dialog.open(EditBookDialogComponent, dialogConfig);
-
-    dialogRef
-      .afterClosed()
-      .subscribe((data) =>
-        this.editBook(this.dataToBook(data))
-      );
   }
 
   dataToBook(data: any): Book {
@@ -59,7 +52,5 @@ export class BooksComponent implements OnInit {
     this.bookService.updateBook(book).subscribe();
   }
 
-  editBook(book: Book): void {
-    this.bookService.updateBook(book).subscribe();
-  }
+
 }
