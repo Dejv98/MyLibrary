@@ -18,7 +18,7 @@ export class BooksComponent implements OnInit {
   isFav: boolean;
   isRead: boolean;
   pageIndex: number = 0;
-  length: number = 100;
+  @Input() length: number = 100;
 
   openEditBookDialog(book: Book) {
     const dialogConfig = new MatDialogConfig();
@@ -44,7 +44,7 @@ export class BooksComponent implements OnInit {
   constructor(private bookService: BookService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.bookService.getBooks().subscribe((books) => (this.books = books));
+    this.bookService.getBooks().subscribe((books) => (this.books = books, this.length = books.length));
   }
 
   deleteBook(book: Book): void {
@@ -93,5 +93,6 @@ export class BooksComponent implements OnInit {
         100000
       )
       .subscribe((books) => (this.length = books.length));
+      this.pageIndex = 0;
   }
 }

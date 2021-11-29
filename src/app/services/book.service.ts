@@ -35,16 +35,6 @@ export class BookService {
   }
 
   getBooksPaginate(isFav: boolean, isRead:boolean, keyWord: string ,page : number, size: number): Observable<Book[]> {
-    let paramsXD = new HttpParams();
-    paramsXD.append('_limit',size);
-    paramsXD.append('_page', page);
-
-    let options = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      }),
-      params: paramsXD
-    };
     let url = `${this.apiUrl}?q=${keyWord}`;
     if (isFav) {
       url += '&isFavorite=true';
