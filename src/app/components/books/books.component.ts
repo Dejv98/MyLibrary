@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { Book } from 'src/app/Book';
 import { BookService } from 'src/app/services/book.service';
 import { EditBookDialogComponent } from '../edit-book-dialog/edit-book-dialog.component';
@@ -10,11 +11,16 @@ import { EditBookDialogComponent } from '../edit-book-dialog/edit-book-dialog.co
   styleUrls: ['./books.component.scss'],
 })
 export class BooksComponent implements OnInit {
+  filterValue: string = '';
   @Input() books: Book[] = [];
-  totalRecords: Number;
-  page: Number = 1;
+  pageSize: number = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  isFav: boolean;
+  isRead: boolean;
+  pageIndex: number = 0;
+  length: number = 100;
 
-  openEditBookDialog(book : Book) {
+  openEditBookDialog(book: Book) {
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
@@ -23,7 +29,12 @@ export class BooksComponent implements OnInit {
     dialogConfig.data = book;
 
     this.dialog.open(EditBookDialogComponent, dialogConfig);
+  }
 
+  onPaginateChange(event: PageEvent) {
+    this.pageIndex = event.pageIndex;
+    this.pageSize = event.pageSize;
+    this.searchBook(this.filterValue, this.isFav, this.isRead);
   }
 
   dataToBook(data: any): Book {
@@ -32,7 +43,9 @@ export class BooksComponent implements OnInit {
 
   constructor(private bookService: BookService, private dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.bookService.getBooks().subscribe((books) => (this.books = books));
+  }
 
   deleteBook(book: Book): void {
     this.bookService
@@ -45,12 +58,40 @@ export class BooksComponent implements OnInit {
   readBook(book: Book): void {
     book.isRead = !book.isRead;
     this.bookService.updateBook(book).subscribe();
+    if (this.isRead) {
+      
+      this.books = this.books.filter((b) => b.isRead == this.isRead);
+    }
   }
 
   favoriteBook(book: Book): void {
     book.isFavorite = !book.isFavorite;
     this.bookService.updateBook(book).subscribe();
+    if (this.isFav) {
+      this.books = this.books.filter((b) => b.isFavorite == this.isFav);
+    }
   }
 
-
+  //code below is shitty as hell but i'm too lazy to fix this shit right now. Still better code than canal developer can produce
+  //fixed
+  searchBook(searchWord: string, isFav: boolean, isRead: boolean): void {
+    this.bookService
+      .getBooksPaginate(
+        isFav,
+        isRead,
+        searchWord,
+        this.pageIndex,
+        this.pageSize
+      )
+      .subscribe((books) => (this.books = books));
+      this.bookService
+      .getBooksPaginate(
+        isFav,
+        isRead,
+        searchWord,
+        null,
+        100000
+      )
+      .subscribe((books) => (this.length = books.length));
+  }
 }

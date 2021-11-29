@@ -1,3 +1,19 @@
+<mat-form-field class="XD">
+  <mat-label>XD </mat-label>
+  <input matInput type="text" [(ngModel)]="filterValue" (input)="searchBook(filterValue, isFav, isRead)" placeholder="XD">
+</mat-form-field>
+<section class="example-section">
+  <mat-checkbox class="example-margin" [(ngModel)]="isFav" (change)="searchBook(filterValue, isFav, isRead)"><mat-icon>favorite</mat-icon></mat-checkbox>
+  <mat-checkbox class="example-margin" [(ngModel)]="isRead" (change)="searchBook(filterValue, isFav, isRead)"><mat-icon>bookmark_added</mat-icon></mat-checkbox>
+</section>
+
+<mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="onPaginateChange($event)"
+              aria-label="Select page">
+</mat-paginator>
+
 <div class="books">
   <app-book-item *ngFor="let book of books" [book]="book" (onDeleteBook)="deleteBook(book)" (onFavoriteBook)="favoriteBook(book)" (onReadBook)="readBook(book)" (onEditBook)="openEditBookDialog(book)"></app-book-item>
 </div>

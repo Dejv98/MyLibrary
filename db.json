@@ -15,7 +15,7 @@
       "desc": "W zamierzchłych czasach kowale elfów wykuli Pierścienie Mocy. Lecz Mroczny Władca, stworzył w tajemnicy Jedyny Pierścień, napełniając go swą potęgą, aby rządził pozostałymi. Ale Pierścień zniknął i przepadł gdzieś w Śródziemiu.Minęło wiele wieków, zanim się odnalazł i trafi ł w ręce hobbita, którego przeznaczeniem stała się wędrówka do Krainy Cienia, by zniszczyć Jedyny Pierścień...",
       "author": "J.R.R. Tolkien",
       "imageLink": "https://s.lubimyczytac.pl/upload/books/159000/159957/352x500.jpg",
-      "isFavorite": false,
+      "isFavorite": true,
       "isRead": true
     },
     {
@@ -25,6 +25,123 @@
       "author": "Richard A. Knaak",
       "imageLink": "https://s.lubimyczytac.pl/upload/books/234000/234646/408720-352x500.jpg",
       "isFavorite": true,
+      "isRead": true
+    },
+    {
+      "id": 4,
+      "name": "test1",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": false
+    },
+    {
+      "id": 5,
+      "name": "test2",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": false
+    },
+    {
+      "id": 6,
+      "name": "test3",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": false
+    },
+    {
+      "id": 7,
+      "name": "test4",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": false
+    },
+    {
+      "id": 8,
+      "name": "test5",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": true
+    },
+    {
+      "id": 9,
+      "name": "test6",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": true,
+      "isRead": false
+    },
+    {
+      "id": 10,
+      "name": "test7",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": false
+    },
+    {
+      "id": 11,
+      "name": "test8",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": true
+    },
+    {
+      "id": 12,
+      "name": "test9",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": true,
+      "isRead": true
+    },
+    {
+      "id": 13,
+      "name": "test10",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": true
+    },
+    {
+      "id": 14,
+      "name": "test11",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": false
+    },
+    {
+      "id": 15,
+      "name": "test12",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
+      "isRead": true
+    },
+    {
+      "id": 16,
+      "name": "test13",
+      "desc": "",
+      "author": "",
+      "imageLink": "",
+      "isFavorite": false,
       "isRead": false
     }
   ]

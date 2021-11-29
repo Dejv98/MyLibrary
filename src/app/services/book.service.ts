@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from 'src/app/Book';
 
@@ -32,5 +32,27 @@ export class BookService {
 
   addBook(book: Book): Observable<Book> {
     return this.http.post<Book>(this.apiUrl, book, httpOptions);
+  }
+
+  getBooksPaginate(isFav: boolean, isRead:boolean, keyWord: string ,page : number, size: number): Observable<Book[]> {
+    let paramsXD = new HttpParams();
+    paramsXD.append('_limit',size);
+    paramsXD.append('_page', page);
+
+    let options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      params: paramsXD
+    };
+    let url = `${this.apiUrl}?q=${keyWord}`;
+    if (isFav) {
+      url += '&isFavorite=true';
+    }
+    if (isRead) {
+      url += '&isRead=true';
+    }
+    url += `&_page=${page+1}&_limit=${size}`;
+    return this.http.get<Book[]>(url, httpOptions);
   }
 }
